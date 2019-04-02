@@ -14,7 +14,7 @@ myLSB_STABLE_SUPPORTED="stretch"
 myLSB_TESTING_SUPPORTED="sid"
 myREMOTESITES="https://hub.docker.com https://github.com https://pypi.python.org https://debian.org"
 myPREINSTALLPACKAGES="apache2-utils curl dialog figlet grc libcrack2 libpq-dev lsb-release netselect-apt net-tools software-properties-common toilet"
-myINSTALLPACKAGES="apache2-utils apparmor apt-transport-https aufs-tools bash-completion build-essential ca-certificates cgroupfs-mount cockpit cockpit-docker console-setup console-setup-linux curl debconf-utils dialog dnsutils docker.io docker-compose dstat ethtool fail2ban figlet genisoimage git glances grc haveged html2text htop iptables iw jq kbd libcrack2 libltdl7 man mosh multitail netselect-apt net-tools npm ntp openssh-server openssl pass prips software-properties-common syslinux psmisc pv python-pip toilet unattended-upgrades unzip vim wget wireless-tools wpasupplicant"
+myINSTALLPACKAGES="apache2-utils apparmor apt-transport-https aufs-tools bash-completion build-essential ca-certificates cgroupfs-mount cockpit cockpit-docker console-setup console-setup-linux curl debconf-utils dialog dnsutils docker.io docker-compose dstat ethtool fail2ban figlet genisoimage git glances grc haveged html2text htop iptables iw jq kbd libcrack2 libltdl7 man mosh multitail netselect-apt net-tools npm ntp openssh-server openssl pass prips software-properties-common syslinux psmisc pv python-pip toilet unattended-upgrades unzip vim wget wireless-tools wpasupplicant python-backports.ssl-match-hostname"
 myINFO="\
 ########################################
 ### T-Pot Installer for Debian (Sid) ###
@@ -267,7 +267,12 @@ function fuGET_DEPS {
   echo
   echo "### Determine fastest mirror for your location."
   echo
-  netselect-apt -n -a amd64 unstable && cp sources.list /etc/apt/
+  add-apt-repository  "deb [arch=amd64] https://download.docker.com/linux/debian stretch  stable"
+  echo
+  netselect-apt -n -a amd64 unstable && cp sources.list /etc/apt/ 
+  echo
+  echo
+  add-apt-repository  "deb [arch=amd64] https://download.docker.com/linux/debian stretch  stable"
   echo
   echo "### Getting update information."
   echo
