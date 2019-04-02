@@ -272,7 +272,6 @@ function fuGET_DEPS {
   netselect-apt -n -a amd64 unstable && cp sources.list /etc/apt/ 
   echo
   echo
-  add-apt-repository  "deb [arch=amd64] https://download.docker.com/linux/debian stretch  stable"
   echo
   echo "### Getting update information."
   echo
